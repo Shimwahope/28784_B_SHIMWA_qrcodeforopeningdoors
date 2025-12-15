@@ -59,13 +59,14 @@ D.PL/SQL Components
 
    3.Package qr_access_pkg – Groups related procedures and cursors
 
-   4.Triggers:
+4. Triggers
 
-      1.Prevent deletion of users with logs
+1.Prevent deletion of users with logs
 
-      2.Enforce weekday/holiday restrictions
+2.Enforce weekdays/holiday restrictions     
 
-      3.Capture audit logs automatically
+3.Capture audit_logs automatically
+
 
 E.Business Rules
 
