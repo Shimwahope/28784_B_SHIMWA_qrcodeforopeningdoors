@@ -61,11 +61,11 @@ D.PL/SQL Components
 
    4.Triggers:
 
-         Prevent deletion of users with logs
+      1.Prevent deletion of users with logs
 
-         Enforce weekday/holiday restrictions
+      2.Enforce weekday/holiday restrictions
 
-         Capture audit logs automatically
+      3.Capture audit logs automatically
 
 E.Business Rules
 
