@@ -1,11 +1,11 @@
 # 28784_B_SHIMWA_qrcodeforopeningdoors
-QR Code Verification for Smart Building Entry Logging
-
 Student: SHIMWA HOPE
 
 Registration Number: 28784
 
 Course: DATABASE WITH PL/SQL
+
+PROJECT:QR Code Verification for Smart Building Entry Logging
 
 A.OBJECTIVES:
 
