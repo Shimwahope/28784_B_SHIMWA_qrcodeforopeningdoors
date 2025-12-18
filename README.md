@@ -8,6 +8,13 @@ Course: DATABASE WITH PL/SQL
 
 PROJECT:QR Code Verification for Smart Building Entry Logging
 
+Project Overview
+
+This project implements a QR Code–based Smart Building Entry Logging System using Oracle Database and PL/SQL. The system replaces manual logbooks and traditional access cards with a secure, automated, and auditable solution.
+
+Each authorized user is assigned a unique QR code stored in the database. When scanned at the building entrance or exit, the system automatically verifies the QR code, logs entry/exit times, and records unauthorized access attempts.
+
+
 A.OBJECTIVES:
 
 1.Automate building entry and exit logging
