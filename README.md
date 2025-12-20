@@ -6,16 +6,16 @@ Registration Number: 28784
 
 Course: DATABASE WITH PL/SQL
 
-PROJECT:QR Code Verification for Smart Building Entry Logging
+## PROJECT:QR Code Verification for Smart Building Entry Logging
 
-Project Overview
+## Project Overview
 
 This project implements a QR Code–based Smart Building Entry Logging System using Oracle Database and PL/SQL. The system replaces manual logbooks and traditional access cards with a secure, automated, and auditable solution.
 
 Each authorized user is assigned a unique QR code stored in the database. When scanned at the building entrance or exit, the system automatically verifies the QR code, logs entry/exit times, and records unauthorized access attempts.
 
 
-A.OBJECTIVES:
+## A.OBJECTIVES:
 
 1.Automate building entry and exit logging
 
@@ -29,7 +29,7 @@ A.OBJECTIVES:
 
 
 
-B.System Features
+## B.System Features
 
 1.QR code verification for access control
 
@@ -43,7 +43,7 @@ B.System Features
 
 6.Analytical queries for monitoring and reporting
 
-C.Database Schema
+## C.Database Schema
 
 The system uses the following main tables:
 
@@ -61,7 +61,7 @@ An ER diagram and data dictionary are provided in the repository.
 
 
 
-D.PL/SQL Components
+## D.PL/SQL Components
 
 1.Function verify\_qr – Validates QR codes and returns user ID
 
@@ -79,7 +79,7 @@ D.PL/SQL Components
 
 
 
-E.Business Rules
+## E.Business Rules
 
 1.Only active users can access the building
 
@@ -89,7 +89,7 @@ E.Business Rules
 
 4.All unauthorized access attempts are logged
 
-F.Analytics \& BI
+## F.Analytics \& BI
 
 1.The system supports analytics such as:
 
@@ -105,7 +105,7 @@ F.Analytics \& BI
 
 These insights help security teams and administrators make data-driven decisions.
 
-G.Testing
+## G.Testing
 
 1.Test data is generated using PL/SQL loops and sequences. Scripts include:
 
@@ -117,7 +117,7 @@ G.Testing
 
 Triggers can be temporarily disabled during bulk data loading.
 
-H.How to Run
+## H.How to Run
 
 1.Create sequences and tables using scripts in /database/scripts/
 
