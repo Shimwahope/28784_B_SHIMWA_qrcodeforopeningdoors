@@ -1,14 +1,15 @@
 
 --Test Case 1: Valid QR code
-SELECT verify_qr('QR_EMP_001') FROM dual;
+SELECT verify_qr('QR_0001') FROM dual;
 --Test Case 2: Invalid QR code
-SELECT verify_qr('QR_FAKE_999') FROM dual;
---Test Case: Authorized user entry
-EXEC log_entry('QR_EMP_001');
---Test Case: Valid exit scan
-EXEC log_exit('QR_EMP_001');
+SELECT verify_qr('FAKE_QR_999') FROM dual;
+--Procedure: log_entry(p_qr_code)
+EXEC log_entry('QR_0001');
+--Procedure: log_exit(p_qr_code)
+EXEC log_exit('QR_0001');
 --Test Case: INSERT on weekday
-INSERT INTO users VALUES (99, 'Test User', 'Employee', 'QR_TEST', 'ACTIVE');
+--Trigger: trg_users_restrict_dml
+INSERT INTO users VALUES (999, 'Blocked User', 'Employee', 'QR_BLOCK', 'ACTIVE');
 --Edge Cases Validated
 --Edge Case	Expected Behavior	Result
 --Invalid QR code	Logged as UNAUTHORIZED Passed
@@ -25,16 +26,20 @@ INSERT INTO users VALUES (99, 'Test User', 'Employee', 'QR_TEST', 'ACTIVE');
 
 BEGIN
   FOR i IN 1..100 LOOP
-    log_entry('QR_EMP_001');
-    log_exit('QR_EMP_001');
+    log_entry('QR_0001');
+    log_exit('QR_0001');
   END LOOP;
 END;
 /
---Test Results Documented
---Evidence Collected
---SQL Developer execution results
---Trigger error messages
---Query outputs
---Audit log records
---Example verification query:
-SELECT * FROM audit_log ORDER BY operation_time DESC;
+--Verification Queries
+SELECT COUNT(*) FROM users;
+SELECT COUNT(*) FROM entry_logs;
+SELECT COUNT(*) FROM access_attempts;
+SELECT COUNT(*) FROM audit_log;
+
+--Sample Logged Data
+SELECT * FROM access_attempts
+WHERE result = 'UNAUTHORIZED';
+
+SELECT * FROM audit_log
+ORDER BY operation_time DESC;
