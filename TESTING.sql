@@ -43,3 +43,65 @@ WHERE result = 'UNAUTHORIZED';
 
 SELECT * FROM audit_log
 ORDER BY operation_time DESC;
+
+--Trigger Blocks INSERT on Weekday (DENIED)
+--Test Condition
+--Test executed on a weekday (Monday–Friday)
+--SQL Executed
+
+INSERT INTO users (
+  user_id, full_name, role, qr_code_value, status
+)
+VALUES (
+  seq_users.NEXTVAL,
+  'Weekday Test User',
+  'Employee',
+  'QR_WEEKDAY_' || seq_users.CURRVAL,
+  'ACTIVE'
+);
+
+--Trigger Allows INSERT on Weekend (ALLOWED)
+--Test Condition
+--Test executed on Saturday or Sunday
+--SQL Executed
+
+INSERT INTO users (
+  user_id, full_name, role, qr_code_value, status
+)
+VALUES (
+  seq_users.NEXTVAL,
+  'Weekend Test User',
+  'Employee',
+  'QR_WEEKEND_' || seq_users.CURRVAL,
+  'ACTIVE'
+);
+
+--Trigger Blocks INSERT on Holiday (DENIED)
+--Test Setup
+--Insert a holiday:
+
+INSERT INTO holidays (holiday_date, holiday_name)
+VALUES (TRUNC(SYSDATE), 'Test Holiday');
+
+COMMIT;
+
+--SQL Executed
+INSERT INTO users (
+  user_id, full_name, role, qr_code_value, status
+)
+VALUES (
+  seq_users.NEXTVAL,
+  'Holiday Test User',
+  'Employee',
+  'QR_HOLIDAY_' || seq_users.CURRVAL,
+  'ACTIVE'
+);
+--Audit Log Captures All Attempts
+--Verification Query
+SELECT object_name,
+       operation,
+       performed_by,
+       details,
+       operation_time
+FROM audit_log
+ORDER BY operation_time DESC;
